@@ -5,7 +5,7 @@ _**Objective: To build a serverless, progressive web application (PWA) with Reac
 ###
 
 **Feature: Filter events by city**
-*User Story: As a user, I would like to be able to filter events by city so that I can see the list of events that take place in that city.
+*User Story: As a user, I would like to be able to filter events by city so that I can see the list of events that take place in that city.*
 
 Scenario 1: When a user has not searched for a city, show upcoming events from all cities.
 Given user hasn’t searched for any city
