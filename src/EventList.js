@@ -1,3 +1,5 @@
+// renders a list of events that take place in the city the user has selected
+
 import React, { Component } from 'react';
 import Event from './Event';
 

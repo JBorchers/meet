@@ -1,3 +1,5 @@
+// where the suer will select a city from the list of suggestions
+
 import React, { Component } from 'react';
 
 class CitySearch extends Component {
@@ -31,37 +33,37 @@ class CitySearch extends Component {
   }
   
   handleItemClicked = (suggestion) => {
-    this.setState({
-      query: suggestion,
-      showSuggestions: undefined,
-      infoText: ''
-    });
-    this.props.updateEvents(suggestion);
-  }
+  this.setState({
+    query: suggestion,
+    showSuggestions: false
+  });
+
+  this.props.updateEvents(suggestion);
+}
   
   render() {
     return (
       <div className="CitySearch">
-      <input 
-      type="text"
-      className="city"
-      value={this.state.query}
-      onChange={this.handleInputChanged}
-      onFocus={() => {this.setState({ showSuggestions: true })}}
-      />
+      <input
+  type="text"
+  className="city"
+  value={this.state.query}
+  onChange={this.handleInputChanged}
+  onFocus={() => { this.setState({ showSuggestions: true }) }}
+/>
       {/* when input is not empty, the suggestion list should be displayed  */}
       {/* when input is empty, the suggestion list should not be displayed */}
-      <ul className="suggestions" style={this.state.showSuggestions ? {} : {display: 'none'}}>
-      {this.state.suggestions.map((suggestion) => (
-        <li
-        key={suggestion}
-        onClick={() => this.handleItemClicked(suggestion)}
-        >{suggestion}</li>
-        ))}
-        <li>
-        <b>See all cities</b>
-        </li>
-        </ul>
+      <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
+  {this.state.suggestions.map((suggestion) => (
+    <li
+      key={suggestion}
+      onClick={() => this.handleItemClicked(suggestion)}
+    >{suggestion}</li>
+  ))}
+  <li onClick={() => this.handleItemClicked("all")}>
+    <b>See all cities</b>
+  </li>
+</ul>
         </div>
         );
       }
