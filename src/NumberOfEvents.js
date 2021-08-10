@@ -18,7 +18,8 @@ class NumberOfEvents extends Component {
     return (
       <div className="CitySearch">
         <input
-          type="text"
+          type="number"
+          placeholder="Enter a number of events"
           className="numberInput"
           value={this.state.query}
           onChange={this.handleInputChanged}
