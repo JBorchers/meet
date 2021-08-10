@@ -17,7 +17,7 @@ describe('<NumberOfEvents /> compoment', () => {
     expect(NumberOfEventsWrapper.find('.numberInput').prop('value')).toBe(query);
   });
 
-  test('change state when text input changes', () => {
+  test('changes state when text input changes', () => {
     NumberOfEventsWrapper.setState({
       query: '32'
     });
