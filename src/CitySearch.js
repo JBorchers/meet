@@ -12,19 +12,20 @@ class CitySearch extends Component {
   
   handleInputChanged = (event) => {
     const value = event.target.value;
+    this.setState({ showSuggestions: true });
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
     this.setState({
       query: value,
-      suggestions,
+      suggestions
     });
-    
-    if(value.length === 0) {
+
+    if (value.length === 0) {
       this.setState({
         showSuggestions: undefined
       })
-    }else {
+    } else {
       this.setState({
         showSuggestions: true
       })
@@ -45,25 +46,25 @@ class CitySearch extends Component {
     return (
       <div className="CitySearch">
       <input
-  type="text"
-  className="city"
-  value={this.state.query}
-  onChange={this.handleInputChanged}
-  onFocus={() => { this.setState({ showSuggestions: true }) }}
-/>
+          placeholder="Search for a City"
+          type="text"
+          className="city"
+          value={this.state.query}
+          onChange={this.handleInputChanged}
+          onFocus={() => { this.setState({ showSuggestions: true }) }} />
       {/* when input is not empty, the suggestion list should be displayed  */}
       {/* when input is empty, the suggestion list should not be displayed */}
       <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
-  {this.state.suggestions.map((suggestion) => (
-    <li
-      key={suggestion}
-      onClick={() => this.handleItemClicked(suggestion)}
-    >{suggestion}</li>
-  ))}
-  <li onClick={() => this.handleItemClicked("all")}>
-    <b>See all cities</b>
-  </li>
-</ul>
+      {this.state.suggestions.map((suggestion) => (
+        <li
+        key={suggestion}
+        onClick={() => this.handleItemClicked(suggestion)}
+        >{suggestion}</li>
+        ))}
+        <li onClick={() => this.handleItemClicked("all")}>
+        <b>See all cities</b>
+        </li>
+        </ul>
         </div>
         );
       }
