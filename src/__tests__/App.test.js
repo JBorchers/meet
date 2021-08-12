@@ -46,7 +46,7 @@ describe('<App /> integration', () => {
   // 1. events state is created in App component
   // 2. events state is passed to EventList component as a prop of events
 
-  test('App passes "locations" state as a prop to CitySearch', () => {
+  test('app passes "locations" state as a prop to CitySearch', () => {
   const AppWrapper = mount(<App />);
   const AppLocationsState = AppWrapper.state('locations');
   expect(AppLocationsState).not.toEqual(undefined);
