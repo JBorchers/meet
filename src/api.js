@@ -39,7 +39,7 @@ const getToken = async (code) => {
     'https://u9uttyc113.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode
   )
     .then((res) => {
-      return res.json();
+      return res.json(); 
     })
     .catch((error) => error);
 
