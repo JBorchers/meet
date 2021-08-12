@@ -72,7 +72,7 @@ describe('<CitySearch /> component', () => {
     expect(CitySearchWrapper.find('.suggestions').prop('style')).not.toEqual({ display: 'none' });
   });
   
-  test("selecting a suggestion should hide the suggestions list", () => {
+  test("selecting suggestion should hide the suggestions list", () => {
     CitySearchWrapper.setState({
       query: 'Berlin',
       showSuggestions: undefined
