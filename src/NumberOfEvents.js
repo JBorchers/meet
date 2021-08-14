@@ -1,32 +1,57 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 
 class NumberOfEvents extends Component {
-
+  
   state = {
-    query: '',
+    numberOfEvents: 32
   }
-
-  handleInputChanged = (event) => {
-    const value = event.target.value;
-    this.setState({
-      query: value,
-    });
+  
+  handleInputChanged = (e) => {
+    const value = e.target.value;
+    if (value < 1) {
+      return this.setState({
+        numberOfEvents: '',
+        // errorText: 'Enter a number between 1 and 32'
+      });
+    } else if (value > 32) {
+      this.setState({
+        numberOfEvents: '',
+        // errorText: 'Enter a number between 1 and 32'
+      });
+    } else {
+      this.setState({
+        numberOfEvents: value,
+        // errorText: ''
+      })
+      this.props.updateEventsLength(value)
+    }          
+    
   };
-
+  
+  // resetInput = (e) => {
+  //   e.target.value = '';
+  // }
+  
   render() {
-
+    
     return (
-      <div className="CitySearch">
-        <input
-          type="number"
-          placeholder="Enter a number of events"
-          className="numberInput"
-          value={this.state.query}
-          onChange={this.handleInputChanged}
-        />
+      <div className="numberOfEvents">
+      <label className="events-input">See a Number of Events</label>
+      <input
+      type="number"
+      placeholder="Enter a number of events"
+      className="numberInput"
+      value={this.state.numberOfEvents}
+      onChange={this.handleInputChanged}
+      />
       </div>
-    )
+      )
+    }
   }
-}
+  
+  export default NumberOfEvents 
 
-export default NumberOfEvents 
+//   NumberOfEvents.propTypes = {
+//     updateEventsLength: PropTypes.func.isRequired
+// }
