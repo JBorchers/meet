@@ -7,10 +7,10 @@ class EventList extends Component {
   render() {
   const { events } = this.props;
   return (
-    <ul className="EventList">
+    <ul className="event-list">
       {events.map(event =>
         // adds a key to each child in events list
-        <li key={event.id}>
+        <li key={event.id} className="event-list-item">
           <Event event={event} />
         </li>
       )}
