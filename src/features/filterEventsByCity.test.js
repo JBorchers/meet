@@ -11,7 +11,7 @@ const feature = loadFeature('./src/features/filterEventsByCity.feature');
 defineFeature(feature, test => {
   test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
     given('user hasn’t searched for any city', () => {
-      // No necessary code here because nothing happened at this point
+      // no code necessary because the user has not done anything
     });
     
     // Rendering the App component is equivalent to “the app has just opened” as it’s the code that would be executed if the user were actually opening up the app.
