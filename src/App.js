@@ -61,8 +61,8 @@ componentDidMount() {
       <div className="App">
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
       {/* pass state to EventList as prop of events */}
-      <EventList events={this.state.events} />
       <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventsLength={(value) => this.updateEventsLength(value)} />
+      <EventList events={this.state.events} />
       </div>
       );
     }
