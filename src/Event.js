@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Card, Row, Col } from 'react-bootstrap';
 
 class Event extends Component {
 
@@ -18,7 +19,9 @@ class Event extends Component {
         const { event } = this.props;
 
         return (
-            <div className='event-wrapper'>
+            <Row>
+                <Col>
+            <Card className='event-wrapper'>
                 <h2 className="event-title">{event.summary}</h2>
 
                 <div className='event-time'>
@@ -43,7 +46,9 @@ class Event extends Component {
                 <div className="btn-wrapper">
                     <button onClick={this.toggleShowMore}>{this.state.showMore ? 'Show less' : 'Show more'}</button>
                 </div>
-            </div>
+            </Card>
+        </Col>
+      </Row>
         )
     }
 }
