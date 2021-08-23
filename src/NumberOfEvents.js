@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { ErrorAlert } from './Alert';
 
 class NumberOfEvents extends Component {
   
   state = {
-    numberOfEvents: 32
+    numberOfEvents: 32,
+    errorText: ''
   }
   
   handleInputChanged = (e) => {
@@ -12,17 +13,17 @@ class NumberOfEvents extends Component {
     if (value < 1) {
       return this.setState({
         numberOfEvents: '',
-        // errorText: 'Enter a number between 1 and 32'
+        errorText: 'Enter a number between 1 and 32'
       });
     } else if (value > 32) {
       this.setState({
         numberOfEvents: '',
-        // errorText: 'Enter a number between 1 and 32'
+        errorText: 'Enter a number between 1 and 32'
       });
     } else {
       this.setState({
         numberOfEvents: value,
-        // errorText: ''
+        errorText: ''
       })
       this.props.updateEventsLength(value)
     }          
@@ -45,6 +46,7 @@ class NumberOfEvents extends Component {
       value={this.state.numberOfEvents}
       onChange={this.handleInputChanged}
       />
+      <ErrorAlert text={this.state.errorText}/>
       </div>
       )
     }
