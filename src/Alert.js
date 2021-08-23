@@ -10,7 +10,13 @@ class Alert extends Component {
   getStyle = () => {
     return {
       color: this.color,
+      backgroundColor: '',
+      width: '100vw',
       display: 'block',
+      lineHeight: '25px',
+      position: "fixed",
+      top: '0',
+      left: '0',
     };
   }
   
@@ -37,5 +43,12 @@ class Alert extends Component {
     }
   }
   
+  class WarningAlert extends Alert {
+    constructor(props) {
+      super(props);
+      this.color = 'yellow'
+    }
+  }
   
-  export {InfoAlert, ErrorAlert};
+  
+  export {InfoAlert, ErrorAlert, WarningAlert};
