@@ -57,14 +57,25 @@ export const getEvents = async () => {
     return mockData;
   }
 
+  // If it returns true (the user is online), the app will request data from the Google Calendar API;
+  // If it returns false (the user is offline), the app will load the event list data stored in localStorage:
+  if (!navigator.onLine) {
+        const data = localStorage.getItem("lastEvents");
+        NProgress.done();
+        return data ? JSON.parse(data).events : [] ;
+    }
+
+  // only check for access token if user is online
   const token = await getAccessToken();
 
   if (token) {
     removeQuery();
     const url = 'https://u9uttyc113.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;
     const result = await axios.get(url);
+    // list of events for future use
     if (result.data) {
       var locations = extractLocations(result.data.events);
+      // localStorage can only store strings
       localStorage.setItem("lastEvents", JSON.stringify(result.data));
       localStorage.setItem("locations", JSON.stringify(locations));
     }
