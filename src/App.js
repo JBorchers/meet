@@ -9,13 +9,15 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
+import { WarningAlert } from './Alert';
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     NumberOfEvents: 32,
-    defaultEvents: 'all'
+    defaultEvents: 'all',
+    warningText: ''
   }
   
   updateEvents = (location, eventCount) => {
@@ -42,6 +44,32 @@ updateEventsLength(inputValue) {
 componentDidMount() {
     const { numberOfEvents } = this.state;
     this.mounted = true;
+
+    //this keeps the alert displayed if the user is offline and refreshes the page.
+		if (!navigator.onLine) {
+			this.setState({
+				warningText: 'You are currently offline. Some features of the app might be limited!'
+			})
+		}
+
+		window.addEventListener('offline', () => {
+			this.setState({
+				warningText: 'You are currently offline. Some features of the app might be limited!'
+			})
+		});
+
+		window.addEventListener('online', () => {
+			this.setState({
+				warningText: 'You are back online!'
+			})
+
+			setTimeout(() => {
+				this.setState({
+					warningText: ''
+				})
+			}, 3000)
+		});
+
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({
@@ -54,11 +82,29 @@ componentDidMount() {
 
   componentWillUnmount(){
     this.mounted = false;
+    window.removeEventListener('offline', () => {
+			this.setState({
+				warningText: 'You are currently offline. Some features of the app might be limited!'
+			})
+		});
+
+		window.removeEventListener('online', () => {
+			this.setState({
+				warningText: 'You are back online!'
+			})
+
+			setTimeout(() => {
+				this.setState({
+					warningText: ''
+				})
+			}, 3000)
+		});
   }
   
   render() {
     return (
       <div className="App">
+      <WarningAlert text={this.state.warningText} />
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
       {/* pass state to EventList as prop of events */}
       <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventsLength={(value) => this.updateEventsLength(value)} />
