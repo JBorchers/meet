@@ -7,9 +7,10 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
 import { WarningAlert } from './Alert';
+import WelcomeScreen from './WelcomeScreen';
 
 class App extends Component {
   state = {
@@ -17,7 +18,8 @@ class App extends Component {
     locations: [],
     NumberOfEvents: 32,
     defaultEvents: 'all',
-    warningText: ''
+    warningText: '',
+    showWelcomeScreen: undefined
   }
   
   updateEvents = (location, eventCount) => {
@@ -41,14 +43,21 @@ updateEventsLength(inputValue) {
 		this.updateEvents(defaultEvents, inputValue);
 	}
 
-componentDidMount() {
+async componentDidMount() {
     const { numberOfEvents } = this.state;
     this.mounted = true;
+
+    const accessToken = localStorage.getItem('access_token');
+		const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+		const searchParams = new URLSearchParams(window.location.search);
+		const code = searchParams.get("code");
+
+		this.setState({ showWelcomeScreen: !(code || isTokenValid) });
 
     //this keeps the alert displayed if the user is offline and refreshes the page.
 		if (!navigator.onLine) {
 			this.setState({
-				warningText: 'You are currently offline. Some features of the app might be limited!'
+				warningText: 'You are currently offline. Some features of the app might be limited'
 			})
 		}
 
@@ -70,6 +79,8 @@ componentDidMount() {
 			}, 3000)
 		});
 
+    
+    if ((code || isTokenValid) && this.mounted) {
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({
@@ -79,6 +90,7 @@ componentDidMount() {
       }
     });
   }
+}
 
   componentWillUnmount(){
     this.mounted = false;
@@ -102,6 +114,9 @@ componentDidMount() {
   }
   
   render() {
+    
+    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+
     return (
       <div className="App">
       <WarningAlert text={this.state.warningText} />
@@ -109,6 +124,11 @@ componentDidMount() {
       {/* pass state to EventList as prop of events */}
       <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventsLength={(value) => this.updateEventsLength(value)} />
       <EventList events={this.state.events} />
+      <WelcomeScreen
+        showWelcomeScreen={this.state.showWelcomeScreen}
+        // This function prop will be called when the “Continue with Google” button in the Welcome Screen component is clicked
+        getAccessToken={() => { getAccessToken() }}
+        />
       </div>
       );
     }
