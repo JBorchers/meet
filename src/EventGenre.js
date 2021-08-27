@@ -1,11 +1,10 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 
 function EventGenre({events}) {
 
     const [data, setData] = useState([]);
-    const colors = ['#6fa832', '#0cf2ee', '#9e0cf2', '#f20cbd', '#eef20c']
+    const colors = ['#6fa832', '#00abc9', '#9e0cf2', '#f20cbd', '#ff7112']
 
     const getData = () => {
         const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
@@ -20,6 +19,7 @@ function EventGenre({events}) {
         return data;
     }
 
+    // listens for changes to the events prop
     useEffect(() => {
         setData(() => getData())
     }, [events]);
