@@ -7,6 +7,7 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import EventGenre from './EventGenre';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
 import { WarningAlert } from './Alert';
@@ -143,7 +144,7 @@ async componentDidMount() {
       <h4>Events in each city</h4>
 
       <div className="data-vis-wrapper" md={12}>
-              {/* <EventGenre events={events} /> */}
+              <EventGenre events={this.state.events} />
 
               <ResponsiveContainer height={400} >
                 <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
