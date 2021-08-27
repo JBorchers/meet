@@ -118,14 +118,14 @@ async componentDidMount() {
   // to get the total number of events happening in each city
   // returns data in an array
   getData = () => {
-    const {locations, events} = this.state;
-    const data = locations.map((location)=>{
-      const number = events.filter((event) => event.location === location).length
-      const city = location.split(', ').shift()
-      return {city, number};
-    })
-    return data;
-  };
+		const { locations, events } = this.state;
+		const data = locations.map((location) => {
+			const number = events.filter((event) => event.location === location).length;
+			const city = location.split(', ').shift();
+			return {city, number};
+		})
+		return data;
+	}
   
   render() {
     
@@ -142,33 +142,34 @@ async componentDidMount() {
       
       <h4>Events in each city</h4>
 
-      <div className="data-vis-wrapper">
-				<h3 style={{marginTop: "40px"}}>Events by genre</h3>
-					
+      <div className="data-vis-wrapper" md={12}>
+              {/* <EventGenre events={events} /> */}
 
-					<h3 style={{marginTop: "40px"}}>Events in each city</h3>
-					<ResponsiveContainer height={400}>
-            <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-              <CartesianGrid />
-              <XAxis type="category" dataKey="city" name="city" />
-              <YAxis
-                allowDecimals={false}
-                type="number"
-                dataKey="number"
-                name="number of events"
-              />
-              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-              <Scatter data={this.getData()} fill="#8884d8" />
-            </ScatterChart>
-          </ResponsiveContainer>
-				</div>
+              <ResponsiveContainer height={400} >
+                <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                  <CartesianGrid />
+                  <XAxis
+                    type="category"
+                    dataKey="city"
+                    name="city" />
+                  <YAxis
+                    allowDecimals={false}
+                    type="number"
+                    dataKey="number"
+                    name="number of events"
+                  />
+                  <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+                  <Scatter data={this.getData()} fill="#8884d8" />
+                </ScatterChart>
+              </ResponsiveContainer>
+            </div>
               
       <EventList events={this.state.events} />
-      <WelcomeScreen
+      {/* <WelcomeScreen
         showWelcomeScreen={this.state.showWelcomeScreen}
         // This function prop will be called when the “Continue with Google” button in the Welcome Screen component is clicked
         getAccessToken={() => { getAccessToken() }}
-        />
+        /> */}
       </div>
       );
     }
