@@ -136,12 +136,12 @@ async componentDidMount() {
       <div className="App">
       <WarningAlert text={this.state.warningText} />
       <h1>Meet App</h1>
-      <h4>Choose your nearest city</h4>
+      <h2>See what developer events are happening around the world!</h2>
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
       {/* pass state to EventList as prop of events */}
       <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventsLength={(value) => this.updateEventsLength(value)} />
       
-      <h4>Events in each city</h4>
+      <h3>Events in each city</h3>
 
       <div className="data-vis-wrapper" md={12}>
               <EventGenre events={this.state.events} />
@@ -166,11 +166,11 @@ async componentDidMount() {
             </div>
               
       <EventList events={this.state.events} />
-      {/* <WelcomeScreen
+      <WelcomeScreen
         showWelcomeScreen={this.state.showWelcomeScreen}
         // This function prop will be called when the “Continue with Google” button in the Welcome Screen component is clicked
         getAccessToken={() => { getAccessToken() }}
-        /> */}
+        />
       </div>
       );
     }
