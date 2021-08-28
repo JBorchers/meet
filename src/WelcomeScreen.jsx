@@ -8,13 +8,13 @@ function WelcomeScreen(props) {
 
     <div className="WelcomeScreen">
       <div className="content">
-        <h1>Welcome to the Meet App</h1>
+        <h1 className="title">Welcome to the Meet App</h1>
         <br />
-        <h4>
+        <h2>
           Check out upcoming events around the world for
           full-stack
           developers
-        </h4>
+        </h2>
 
         <div className="button_cont" align="center">
           <div className="google-btn">
