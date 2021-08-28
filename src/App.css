@@ -41,8 +41,13 @@ h4 {
 /* .recharts-tooltip-label {
   text-shadow: none;
   background-color: black;
-  color: white;
+  
 } */
+
+.recharts-default-tooltip {
+  background-color: black;
+  color: white;
+}
 
 .Alert {
   color: white;
@@ -135,6 +140,7 @@ input[type="number"] {
 
 element.style {
   text-shadow: none;
+  background-color: black;
 }
 
 .suggestions {
