@@ -4,7 +4,7 @@ import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 function EventGenre({events}) {
 
     const [data, setData] = useState([]);
-    const colors = ['#6fa832', '#00abc9', '#9e0cf2', '#f20cbd', '#ff7112']
+    const colors = ['#6fa832', '#00abc9', 'white', '#f20cbd', '#ff7112']
 
     const getData = () => {
         const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
@@ -40,7 +40,7 @@ function EventGenre({events}) {
                 >
                     { data.map((entry, index) => <Cell key={`cell-${index}`} fill={colors[index]} />)}
                 </Pie>
-                <Legend layout="horizontal" align="center" verticalAlign="bottom"></Legend>
+                <Legend className="legend" layout="horizontal" align="center" verticalAlign="bottom"></Legend>
             </PieChart>
         </ResponsiveContainer>
     )
