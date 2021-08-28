@@ -38,7 +38,7 @@ class NumberOfEvents extends Component {
     
     return (
       <div className="numberOfEvents">
-      <label className="events-input">See a Number of Events</label>
+      <label className="events-input">See a number of events to show</label>
       <input
       type="number"
       placeholder="Enter a number of events"
