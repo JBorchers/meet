@@ -9,7 +9,7 @@ class Alert extends Component {
   
   getStyle = () => {
     return {
-      color: this.color,
+      // color: this.color,
       width: '100vw',
       display: 'block',
       lineHeight: '25px',
