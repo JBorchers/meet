@@ -35,7 +35,7 @@ class CitySearch extends Component {
    if (suggestions.length === 0) {
       this.setState({
         query: value,
-        infoText: "We can't find the city you are looking for. Please try another city"
+        infoText: "We can't find the city you are looking for. Please check the spelling or try another city"
       });
     } else {
       return this.setState({
@@ -59,7 +59,7 @@ class CitySearch extends Component {
     return (
       <div className="CitySearch">
         <InfoAlert text={this.state.infoText} />
-      <label>Search Events in a Specific City</label>
+      {/* <label>Search Events in a Specific City</label> */}
       <input
           placeholder="Search for a City"
           type="text"
