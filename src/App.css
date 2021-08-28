@@ -38,11 +38,11 @@ h4 {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.recharts-tooltip-label {
+/* .recharts-tooltip-label {
   text-shadow: none;
-  /* background-color: black;
-  color: white; */
-}
+  background-color: black;
+  color: white;
+} */
 
 .Alert {
   color: white;
@@ -131,6 +131,10 @@ input[type="number"] {
   max-width: 300px;
   margin: auto;
   position: relative;
+}
+
+element.style {
+  text-shadow: none;
 }
 
 .suggestions {
