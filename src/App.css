@@ -1,7 +1,85 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+/* body {
+  font-family: roboto;
+  background-image:url('./City.jpg');
+  background-attachment: fixed;
+  background-position: center;
+} */
+
+body {
+  background-image:url('./city_background.png');
+  background-attachment: fixed;
+  /* background-color: rgb(87, 84, 81); */
+}
+
+h1 {
+  text-shadow: 2px 2px 3px #000000;
+  color: rgb(247, 102, 138);
+  font-size: 400%;
+  margin-bottom: 0;
+}
+
+h2 {
+  text-shadow: 2px 2px 3px #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 100;
+  color: white;
+}
+
+h3 {
+  text-shadow: 2px 2px 3px #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: lighter;
+  text-decoration: underline;
+}
+
+h4 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.Alert {
+  color: white;
+  font-style: italic;
+}
+
+.event-wrapper {
+  margin: 10px;
+  box-shadow: 3px 3px 3px #000000;
+  background: linear-gradient(to right bottom, #dadada, #585858);
+  color: black;
+}
+
+.events-input {
+  font-size: 80%;
+}
+
+.recharts-default-legend {
+ text-shadow: 2px 2px 3px #000000;
+ font-weight: 500;
+ }
+
+ .recharts-responsive-container {
+   text-shadow: 2px 2px 3px #000000;
+   font-weight: 500;
+ }
+
+ .recharts-symbols {
+   box-shadow: 3px 3px 3px #000000;;
+ }
+
+/* .legend {
+  text-shadow: 2px 2px 3px #000000;
+} */
+
 .App {
   text-align: center;
   padding: 2% 5%;
+  color: white;
+}
+
+.navbar {
+  box-shadow: 2px 2px 3px #000000;
 }
 
 .App * {
@@ -29,7 +107,7 @@ input[type="number"] {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(204, 204, 204);
   font-size: 14px;
   line-height: 20px;
   align-self: center;
@@ -63,7 +141,7 @@ input[type="number"] {
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
+  background-color: rgb(56, 133, 163);
   cursor: default;
 }
 
@@ -76,7 +154,6 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
-/* turn these into cards */
 .event-wrapper {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
@@ -142,10 +219,10 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-.Alert {
+/* .Alert {
   position: fixed;
   top: 100px;
-}
+} */
 
 .data-vis-wrapper {
   display: flex;
@@ -180,8 +257,8 @@ input[type="number"] {
   background-color: #4285f4;
   border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-}
-.google-btn:hover {
+} */
+/* .google-btn:hover {
   box-shadow: 0 0 6px #4285f4;
 }
 .google-btn:active {
