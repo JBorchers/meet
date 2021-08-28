@@ -38,6 +38,12 @@ h4 {
   font-family: 'Courier New', Courier, monospace;
 }
 
+.recharts-tooltip-label {
+  text-shadow: none;
+  background-color: black;
+  color: white;
+}
+
 .Alert {
   color: white;
   font-style: italic;
