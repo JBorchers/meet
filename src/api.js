@@ -1,6 +1,7 @@
 import { mockData } from './mock-data';
 import axios from 'axios';
 import NProgress from 'nprogress';
+import config from './config';
 
 export const extractLocations = (events) => {
   var extractLocations = events.map((event) => event.location);
@@ -36,7 +37,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    'https://u9uttyc113.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode
+    config.API_URL + 'token/' + encodeCode
   )
     .then((res) => {
       return res.json(); 
@@ -70,7 +71,7 @@ export const getEvents = async () => {
 
   if (token) {
     removeQuery();
-    const url = 'https://u9uttyc113.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;
+    const url = config.API_URL + 'get-events/' + token;
     const result = await axios.get(url);
     // list of events for future use
     if (result.data) {
@@ -96,7 +97,7 @@ export const getAccessToken = async () => {
     // If no authorization code is found (!code), the user is automatically redirected to the Google Authorization screen, where they can sign in and receive their code. 
     if (!code) {
       const results = await axios.get(
-        "https://u9uttyc113.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
+        config.API_URL + 'get-auth-url'
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
