@@ -11,9 +11,7 @@ function WelcomeScreen(props) {
         <h1 className="title">Welcome to the Meet App</h1>
         <br />
         <h2>
-          Check out upcoming events around the world for
-          full-stack
-          developers
+          Check out upcoming events around the world for full-stack developers
         </h2>
 
         <div className="button_cont" align="center">
