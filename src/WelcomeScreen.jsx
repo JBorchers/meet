@@ -25,7 +25,9 @@ function WelcomeScreen(props) {
 
           </div>
         </div>
-
+      <div>
+        <h2><i>Note: this app was made as a class project and therefore may not be verified with Google</i></h2>
+      </div>
         <a href="https://jborchers.github.io/meet/privacy.html" rel="nofollow noopener">Privacy policy</a>
 
       </div>
